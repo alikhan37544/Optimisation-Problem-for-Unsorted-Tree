@@ -32,12 +32,12 @@ def build_tree():
     nodes_to_process = [root]
     while nodes_to_process:
         current_node = nodes_to_process.pop(0)
-        left_value = input(f"Enter the value for the left child of {current_node.value} (or 'None' if no left child): ")
-        if left_value.lower() != 'none':
+        left_value = input(f"Enter the value for the left child of {current_node.value} (or leave blank for no left child): ")
+        if left_value.strip():
             insert_left(current_node, int(left_value))
             nodes_to_process.append(current_node.left)
-        right_value = input(f"Enter the value for the right child of {current_node.value} (or 'None' if no right child): ")
-        if right_value.lower() != 'none':
+        right_value = input(f"Enter the value for the right child of {current_node.value} (or leave blank for no right child): ")
+        if right_value.strip():
             insert_right(current_node, int(right_value))
             nodes_to_process.append(current_node.right)
     return root
@@ -48,3 +48,4 @@ tree = build_tree()
 # Print the binary tree
 print("\nBinary Tree:")
 print_tree(tree)
+print(type(tree))
